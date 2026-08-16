@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90s Ki Mehfil — Golden Era Hindi Music</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Poppins:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F2E7CE;
+    --paper:#EADFC4;
+    --maroon:#5C1A1B;
+    --maroon-deep:#3E1112;
+    --gold:#C79A3B;
+    --gold-light:#E8C878;
+    --teal:#1F5C56;
+    --ink:#241712;
+    --tape:#3D2B1F;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Poppins',sans-serif;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--gold); color:var(--maroon-deep);}
+
+  /* texture */
+  .grain{
+    position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.05;
+    background-image:radial-gradient(circle, var(--ink) 1px, transparent 1px);
+    background-size:3px 3px;
+  }
+
+  /* ===== NAV ===== */
+  nav{
+    position:sticky; top:0; z-index:50;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:18px 6%;
+    background:var(--cream);
+    border-bottom:2px solid var(--maroon);
+  }
+  .logo{
+    font-family:'Rozha One',serif; font-size:26px; color:var(--maroon);
+    letter-spacing:1px;
+  }
+  .logo span{color:var(--gold);}
+  .navlinks{display:flex; gap:28px; font-size:14px; font-weight:500;}
+  .navlinks a{color:var(--ink); text-decoration:none; opacity:.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:80px 6% 60px;
+    max-width:1200px; margin:0 auto;
+    gap:40px; flex-wrap:wrap;
+  }
+  .hero-text{flex:1; min-width:300px;}
+  .eyebrow{
+    font-family:'Space Mono',monospace; font-size:13px; color:var(--teal);
+    letter-spacing:3px; text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:28px; height:2px; background:var(--teal);}
+  h1{
+    font-family:'Rozha One',serif; font-size:clamp(42px,6vw,72px);
+    color:var(--maroon); line-height:1.05; margin-bottom:20px;
+  }
+  h1 em{font-style:normal; color:var(--gold); position:relative;}
+  .hero-sub{
+    font-size:16px; color:var(--ink); opacity:.75; max-width:440px; line-height:1.7;
+    margin-bottom:30px;
+  }
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    font-family:'Poppins',sans-serif; font-weight:600; font-size:14px;
+    padding:14px 28px; border-radius:2px; cursor:pointer; border:2px solid var(--maroon);
+    transition:transform .15s ease, background .2s ease;
+  }
+  .btn-solid{background:var(--maroon); color:var(--cream);}
+  .btn-solid:hover{background:var(--maroon-deep); transform:translateY(-2px);}
+  .btn-ghost{background:transparent; color:var(--maroon);}
+  .btn-ghost:hover{background:var(--maroon); color:var(--cream); transform:translateY(-2px);}
+
+  /* cassette graphic */
+  .cassette-wrap{
+    flex:0 0 340px; display:flex; justify-content:center; align-items:center;
+  }
+  .cassette{
+    width:320px; height:200px; background:var(--tape);
+    border-radius:12px; position:relative;
+    box-shadow: inset 0 0 0 2px #00000030, 6px 6px 0 var(--gold);
+    padding:20px;
+  }
+  .cassette-label{
+    background:var(--cream); height:110px; border-radius:4px;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    position:relative; overflow:hidden;
+  }
+  .cassette-label::before{
+    content:''; position:absolute; inset:0;
+    background:repeating-linear-gradient(115deg, transparent, transparent 8px, #5C1A1B08 8px, #5C1A1B08 9px);
+  }
+  .reel-row{display:flex; justify-content:space-between; width:100%; padding:0 30px;}
+  .reel{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    animation:spin 3s linear infinite;
+  }
+  .reel::after{content:''; width:14px; height:14px; border-radius:50%; background:var(--tape);}
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .cassette-title{
+    font-family:'Space Mono',monospace; font-weight:700; font-size:13px;
+    color:var(--maroon); letter-spacing:2px; z-index:2;
+  }
+  .cassette-sub{font-family:'Space Mono',monospace; font-size:10px; color:var(--teal); z-index:2; margin-top:4px;}
+  .cassette-bottom{display:flex; justify-content:space-between; margin-top:14px;}
+  .tape-window{width:70px; height:14px; background:#0000004a; border-radius:2px;}
+
+  /* ===== TICKER ===== */
+  .ticker-wrap{
+    background:var(--maroon); border-top:2px solid var(--gold); border-bottom:2px solid var(--gold);
+    overflow:hidden; white-space:nowrap; padding:10px 0;
+  }
+  .ticker{
+    display:inline-block; font-family:'Space Mono',monospace; font-size:13px;
+    color:var(--gold-light); letter-spacing:1px;
+    animation:ticker 22s linear infinite;
+  }
+  .ticker span{margin:0 22px;}
+  @keyframes ticker{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+  /* ===== FILTER ===== */
+  .filter-section{max-width:1200px; margin:0 auto; padding:60px 6% 20px;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:28px; flex-wrap:wrap; gap:16px;}
+  .section-head h2{font-family:'Rozha One',serif; font-size:34px; color:var(--maroon);}
+  .track-count{font-family:'Space Mono',monospace; font-size:13px; color:var(--teal);}
+  .filters{display:flex; gap:10px; flex-wrap:wrap; margin-bottom:10px;}
+  .filter-pill{
+    font-family:'Poppins',sans-serif; font-size:13px; font-weight:500;
+    padding:8px 18px; border-radius:20px; border:1.5px solid var(--maroon);
+    background:transparent; color:var(--maroon); cursor:pointer;
+    transition:all .18s ease;
+  }
+  .filter-pill:hover{background:#5c1a1b15;}
+  .filter-pill.active{background:var(--maroon); color:var(--cream);}
+
+  /* ===== TRACKLIST ===== */
+  .tracklist{
+    max-width:1200px; margin:0 auto; padding:10px 6% 170px;
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;
+  }
+  .track{
+    display:flex; flex-direction:column; gap:14px;
+    padding:20px; border-radius:10px;
+    background:var(--paper); border:1px solid #5c1a1b20;
+    cursor:pointer; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    opacity:0; transform:translateY(14px);
+    animation:rise .45s ease forwards;
+  }
+  @keyframes rise{to{opacity:1; transform:translateY(0);}}
+  .track:hover{transform:translateY(-4px); box-shadow:5px 5px 0 var(--gold); border-color:var(--maroon);}
+  .track:hover .bars span{animation-play-state:running;}
+  .track-top{display:flex; align-items:center; justify-content:space-between;}
+  .track-num{font-family:'Space Mono',monospace; color:var(--gold); font-size:15px; font-weight:700;}
+  .track-info h3{font-size:16px; font-weight:600; color:var(--ink); margin-bottom:4px; line-height:1.3;}
+  .track-info p{font-size:13px; color:var(--ink); opacity:.6;}
+  .track-bottom{display:flex; align-items:center; justify-content:space-between;}
+  .track-tag{
+    font-family:'Space Mono',monospace; font-size:11px; color:var(--teal);
+    border:1px solid var(--teal); padding:3px 10px; border-radius:12px;
+    white-space:nowrap;
+  }
+  .bars{display:flex; align-items:flex-end; gap:3px; height:20px; width:22px;}
+  .bars span{
+    width:3px; background:var(--maroon); animation:bar 1s ease-in-out infinite; animation-play-state:paused;
+  }
+  .bars span:nth-child(1){height:40%; animation-delay:0s;}
+  .bars span:nth-child(2){height:100%; animation-delay:.15s;}
+  .bars span:nth-child(3){height:65%; animation-delay:.3s;}
+  .bars span:nth-child(4){height:85%; animation-delay:.45s;}
+  @keyframes bar{0%,100%{transform:scaleY(.4);} 50%{transform:scaleY(1);}}
+
+  /* ===== FOOTER ===== */
+  footer{
+    background:var(--maroon-deep); color:var(--cream); padding:50px 6% 30px; text-align:center;
+  }
+  footer h3{font-family:'Rozha One',serif; font-size:26px; color:var(--gold-light); margin-bottom:10px;}
+  footer p{font-size:13px; opacity:.6; max-width:480px; margin:0 auto 20px;}
+  .footer-line{font-family:'Space Mono',monospace; font-size:11px; opacity:.4; margin-top:24px;}
+
+  .track.playing{border-color:var(--maroon); box-shadow:5px 5px 0 var(--gold);}
+  .track.playing .track-num{color:var(--maroon);}
+  .play-btn{
+    width:34px; height:34px; border-radius:50%; border:1.5px solid var(--maroon);
+    background:transparent; display:flex; align-items:center; justify-content:center;
+    cursor:pointer; flex-shrink:0; transition:all .15s ease;
+  }
+  .play-btn:hover{background:var(--maroon);}
+  .play-btn:hover svg{fill:var(--cream);}
+  .play-btn svg{fill:var(--maroon); width:13px; height:13px; transition:fill .15s ease;}
+
+  /* ===== PLAYER BAR ===== */
+  .player-bar{
+    position:sticky; bottom:0; left:0; right:0; z-index:60;
+    background:var(--maroon-deep); border-top:2px solid var(--gold);
+    box-shadow:0 -6px 20px rgba(0,0,0,.25);
+    display:none; align-items:center; gap:16px;
+    padding:14px 6%;
+  }
+  .player-row{display:flex; align-items:center; gap:14px; flex:0 0 auto; min-width:0; max-width:220px;}
+  .player-bar.active{display:flex;}
+  .player-thumb{
+    width:52px; height:52px; margin:0; flex-shrink:0;
+    border-radius:8px; overflow:hidden;
+    background:linear-gradient(135deg, var(--gold) 0%, var(--tape) 100%);
+    position:relative;
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:inset 0 0 0 2px rgba(0,0,0,.2);
+  }
+  .player-thumb iframe{width:100%; height:100%; border:0;}
+  .player-thumb svg{width:22px; height:22px;}
+  .player-info{flex:1; min-width:0;}
+  .player-info h4{font-size:14px; color:var(--gold-light); font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .player-info p{font-size:12px; color:var(--cream); opacity:.6; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; margin-top:2px;}
+  .player-info a{font-size:11px; color:var(--gold); text-decoration:underline; display:inline-block; margin-top:2px;}
+  .player-close{
+    width:32px; height:32px; border-radius:50%; border:1px solid var(--cream);
+    background:transparent; color:var(--cream); cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; font-size:16px;
+    transition:all .15s ease;
+  }
+  .player-close:hover{background:var(--cream); color:var(--maroon-deep); transform:rotate(90deg);}
+  .player-hint{font-family:'Space Mono',monospace; font-size:10px; color:var(--gold); opacity:.7; flex-shrink:0; letter-spacing:1px;}
+  .player-toggle{
+    width:38px; height:38px; border-radius:50%; border:none;
+    background:var(--gold); color:var(--maroon-deep); cursor:pointer; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center; transition:transform .15s ease;
+  }
+  .player-toggle:hover{transform:scale(1.08);}
+  .player-toggle svg{width:16px; height:16px;}
+  .player-progress-row{display:flex; align-items:center; gap:8px; flex:2; min-width:0;}
+  .player-time{font-family:'Space Mono',monospace; font-size:10px; color:var(--cream); opacity:.7; width:34px; flex-shrink:0;}
+  .player-seek{
+    -webkit-appearance:none; appearance:none; flex:1; height:4px; border-radius:2px;
+    background:rgba(255,255,255,.2); outline:none; cursor:pointer;
+  }
+  .player-seek::-webkit-slider-thumb{
+    -webkit-appearance:none; width:12px; height:12px; border-radius:50%;
+    background:var(--gold); cursor:pointer;
+  }
+  .player-seek::-moz-range-thumb{width:12px; height:12px; border-radius:50%; background:var(--gold); border:none; cursor:pointer;}
+
+  @media(max-width:1000px){
+    .tracklist{grid-template-columns:repeat(2, 1fr);}
+  }
+  @media(max-width:640px){
+    .tracklist{grid-template-columns:1fr; padding-bottom:150px;}
+    .cassette-wrap{order:-1;}
+    .player-hint{display:none;}
+    .player-bar{padding:10px 4%; gap:8px; flex-wrap:wrap;}
+    .player-thumb{width:40px; height:40px;}
+    .player-info h4{font-size:12px;}
+    .player-info p{display:none;}
+    .player-row{max-width:none; flex:1;}
+    .player-progress-row{order:3; flex-basis:100%; width:100%;}
+    .hero{padding:50px 6% 40px;}
+    h1{font-size:clamp(34px,9vw,52px);}
+    .cassette{width:100%; max-width:320px; height:180px;}
+    .filters{gap:8px;}
+    .filter-pill{padding:7px 14px; font-size:12px;}
+    nav{padding:14px 5%;}
+    .section-head h2{font-size:26px;}
+  }
+  @media(max-width:400px){
+    .player-time{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav>
+  <div class="logo">90s<span>::</span>Mehfil</div>
+  <div class="navlinks">
+    <a href="#tracks">Tracklist</a>
+    <a href="#about">About</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-text">
+    <div class="eyebrow">Rewind to 1990–1999</div>
+    <h1>Sunahri <em>Dashak</em><br>ke Geet</h1>
+    <p class="hero-sub">Doordarshan ki shaamein, VCR ka scratch, aur cassette rewind karne ki wo aawaaz — yeh hai 90s ke sabse pyaare Hindi gaanon ka ek chhota sa mixtape.</p>
+    <div class="hero-actions">
+      <button class="btn btn-solid" onclick="document.getElementById('tracks').scrollIntoView({behavior:'smooth'})">Tracklist dekho</button>
+      <button class="btn btn-ghost" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">Kahaani padho</button>
+    </div>
+  </div>
+  <div class="cassette-wrap">
+    <div class="cassette">
+      <div class="cassette-label">
+        <div class="reel-row">
+          <div class="reel"></div>
+          <div class="reel"></div>
+        </div>
+        <div class="cassette-title" style="margin-top:8px;">SIDE A</div>
+        <div class="cassette-sub">GOLDEN HITS 1990–99</div>
+      </div>
+      <div class="cassette-bottom">
+        <div class="tape-window"></div>
+        <div class="tape-window"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker" id="ticker"></div>
+</div>
+
+<section class="filter-section" id="tracks">
+  <div class="section-head">
+    <h2>Tracklist</h2>
+    <span class="track-count" id="count">22 gaane</span>
+  </div>
+  <div class="filters" id="filters"></div>
+</section>
+
+<div class="tracklist" id="tracklist"></div>
+
+<section id="about" style="max-width:800px; margin:0 auto; padding:0 6% 80px; text-align:center;">
+  <h2 style="font-family:'Rozha One',serif; font-size:30px; color:var(--maroon); margin-bottom:16px;">Yeh mixtape kyun?</h2>
+  <p style="line-height:1.8; opacity:.75; font-size:15px;">90s ka Hindi music apne aap mein ek pura mood tha — melody-first, dilkash orchestration, aur wo gaane jo aaj bhi kisi shaadi ya road-trip mein utni hi jaan daal dete hain. Kisi bhi track pe click karke uska mood-tag aur movie dekho.</p>
+</section>
+
+<div class="player-bar" id="playerBar">
+  <div class="player-thumb" id="playerThumb"></div>
+  <div class="player-row" style="flex:1; max-width:none;">
+    <div class="player-info">
+      <h4 id="playerTitle">—</h4>
+      <p id="playerMovie">—</p>
+    </div>
+  </div>
+  <span class="player-hint">YOUTUBE TAB MEIN KHULA</span>
+  <button class="player-close" id="playerClose" aria-label="Clear now playing">✕</button>
+</div>
+
+<footer>
+  <h3>90s :: Mehfil</h3>
+  <p>Ek chhota sa tribute un gaano ko jo abhi bhi radio pe bajte hi dil garden-garden ho jaata hai.</p>
+  <div class="footer-line">MADE WITH ♪ FOR THE CASSETTE GENERATION</div>
+</footer>
+
+<script>
+const songs = [
+  {title:"Tujhe Dekha To", movie:"Dilwale Dulhania Le Jayenge (1995)", tag:"romantic", yt:"vCTW2GfcepQ"},
+  {title:"Pehla Nasha", movie:"Jo Jeeta Wohi Sikandar (1992)", tag:"romantic", yt:"LzXLcKbbDTw"},
+  {title:"Didi Tera Devar Deewana", movie:"Hum Aapke Hain Koun (1994)", tag:"dance", yt:"U_UjsT_RkI8"},
+  {title:"Chaiyya Chaiyya", movie:"Dil Se (1998)", tag:"dance", yt:"9MX-QejdVaQ"},
+  {title:"Tanha Tanha", movie:"Rangeela (1995)", tag:"dance", yt:"fvnbKR6W5N8"},
+  {title:"Mehndi Laga Ke Rakhna", movie:"Dilwale Dulhania Le Jayenge (1995)", tag:"wedding", yt:"7iqNZrEHrLc"},
+  {title:"Ruk Ja O Dil Deewane", movie:"Dilwale Dulhania Le Jayenge (1995)", tag:"romantic", yt:"uafw8rzyUv8"},
+  {title:"Kuch Kuch Hota Hai", movie:"Kuch Kuch Hota Hai (1998)", tag:"romantic", yt:"eJF4DSekiKU"},
+  {title:"Sandese Aate Hai", movie:"Border (1997)", tag:"soulful", yt:"ZPFnsDQsmf8"},
+  {title:"Ek Ladki Ko Dekha To Aisa Laga", movie:"1942: A Love Story (1994)", tag:"romantic", yt:"H5sheEWfsOQ"},
+  {title:"Jaadu Teri Nazar", movie:"Darr (1993)", tag:"dance", yt:"n_oP9Onj0r0"},
+  {title:"Choli Ke Peeche", movie:"Khalnayak (1993)", tag:"dance", yt:"epYiGd853mQ"},
+  {title:"Chura Ke Dil Mera", movie:"Main Khiladi Tu Anari (1994)", tag:"dance", yt:"Yqj1_V90KJo"},
+  {title:"Tu Cheez Badi Hai Mast Mast", movie:"Mohra (1994)", tag:"dance", yt:"nfJUxQvZCDA"},
+  {title:"Dhak Dhak Karne Laga", movie:"Beta (1992)", tag:"romantic", yt:"DVAl2z6CRuc"},
+  {title:"Baazigar O Baazigar", movie:"Baazigar (1993)", tag:"dance", yt:"Xuq6a29AVxM"},
+  {title:"Tip Tip Barsa Paani", movie:"Mohra (1994)", tag:"romantic", yt:"HyKuXycQXkg"},
+  {title:"Bholi Si Surat", movie:"Dil To Pagal Hai (1997)", tag:"romantic", yt:"IsPOtygII-Q"},
+  {title:"Pehla Pehla Pyar Hai", movie:"Hum Aapke Hain Koun (1994)", tag:"romantic", yt:"f-inKsB2Gf8"},
+  {title:"Mera Dil Bhi Kitna Pagal Hai", movie:"Saajan (1991)", tag:"romantic", yt:"FsNc7I33w60"},
+  {title:"Wah Wah Ramji", movie:"Hum Aapke Hain Koun (1994)", tag:"wedding", yt:"v67otk5uSvk"},
+  {title:"Made in India", movie:"Alisha Chinai (1995)", tag:"dance", yt:"pi4HDAa2hC8"},
+];
+
+const tags = ["all","romantic","dance","wedding","soulful"];
+const filtersEl = document.getElementById('filters');
+const listEl = document.getElementById('tracklist');
+const countEl = document.getElementById('count');
+const tickerEl = document.getElementById('ticker');
+
+tickerEl.innerHTML = Array(2).fill(songs.map(s => `<span>♪ ${s.title} — ${s.movie}</span>`).join('')).join('');
+
+let currentYt = null;
+
+function renderTracks(filter){
+  const filtered = filter === "all" ? songs : songs.filter(s => s.tag === filter);
+  listEl.innerHTML = filtered.map((s,i) => `
+    <div class="track ${s.yt===currentYt?'playing':''}" style="animation-delay:${Math.min(i*0.04,0.6)}s" data-yt="${s.yt}" data-title="${s.title}" data-movie="${s.movie}">
+      <div class="track-top">
+        <button class="play-btn" aria-label="Play ${s.title}">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div class="track-tag">${s.tag}</div>
+      </div>
+      <div class="track-info">
+        <h3>${s.title}</h3>
+        <p>${s.movie}</p>
+      </div>
+      <div class="track-bottom">
+        <div class="track-num">${String(i+1).padStart(2,'0')}</div>
+        <div class="bars"><span></span><span></span><span></span><span></span></div>
+      </div>
+    </div>
+  `).join('');
+  countEl.textContent = filtered.length + " gaane";
+
+  listEl.querySelectorAll('.track').forEach(el => {
+    el.addEventListener('click', () => playTrack(el.dataset.yt, el.dataset.title, el.dataset.movie));
+  });
+}
+
+const playerBar = document.getElementById('playerBar');
+const playerThumb = document.getElementById('playerThumb');
+const playerTitle = document.getElementById('playerTitle');
+const playerMovie = document.getElementById('playerMovie');
+const playerClose = document.getElementById('playerClose');
+
+function playTrack(yt, title, movie){
+  currentYt = yt;
+  window.open(`https://www.youtube.com/watch?v=${yt}`, '_blank', 'noopener');
+  playerThumb.innerHTML = `<svg viewBox="0 0 24 24" fill="var(--maroon-deep)"><path d="M8 5v14l11-7z"/></svg>`;
+  playerTitle.textContent = title;
+  playerMovie.textContent = movie;
+  playerBar.classList.add('active');
+  const activeTag = document.querySelector('.filter-pill.active').dataset.tag;
+  renderTracks(activeTag);
+}
+
+playerClose.addEventListener('click', () => {
+  currentYt = null;
+  playerThumb.innerHTML = '';
+  playerBar.classList.remove('active');
+  const activeTag = document.querySelector('.filter-pill.active').dataset.tag;
+  renderTracks(activeTag);
+});
+
+filtersEl.innerHTML = tags.map(t => `<button class="filter-pill ${t==='all'?'active':''}" data-tag="${t}">${t}</button>`).join('');
+filtersEl.querySelectorAll('.filter-pill').forEach(btn => {
+  btn.addEventListener('click', () => {
+    filtersEl.querySelectorAll('.filter-pill').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderTracks(btn.dataset.tag);
+  });
+});
+
+renderTracks("all");
+</script>
+</body>
+</html>
